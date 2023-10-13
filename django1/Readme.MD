@@ -178,3 +178,26 @@ No admin.py deve ser registrados os modulos
 python manage.py shell
 
 ```
+### Como interagir em um model via shell
+
+```
+python manage.py shell
+from core.models import Product
+dir(Product)
+```
+Neste comando acima inicializamos o paython shell, depois importamos
+nosso app 'core' e o model 'Product' e importamos. A função dir vai retornar tudo que esse model tem.
+
+```
+dir(Product.objects)
+products = Product.objects.all()
+products
+```
+
+Aqui listamos o atributo objects do Model depois instanciamos o Product com o objects e o métoddo all
+depois escrevendo somente o nome do nosso objeto instanciado temos essa resposta "<QuerySet [<Product: PS1>]>"
+
+```
+for product in products: 
+  print(product)
+```
