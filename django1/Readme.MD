@@ -201,3 +201,18 @@ depois escrevendo somente o nome do nosso objeto instanciado temos essa resposta
 for product in products: 
   print(product)
 ```
+# Arquivos estáticos
+
+Criar um diretório chamado static dentro do app, depois criar seus diretorios ex:
+.css
+.js
+.images
+
+No arquivo settings dentro do projeto informar as variáveis o:
+STATIC_URL = usado para acessar em desenvolvimento
+STATIC_ROOT = usado para acessar em produção
+
+Comando para copiar os arquivos estáticos de desenvolvimento para produção
+```
+python manage.py collectstatic
+```
