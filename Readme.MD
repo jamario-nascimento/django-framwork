@@ -1,6 +1,6 @@
 # Criando Projetos Django
 
-Para iníciar instalamos o PyCharm IDE para desenvolvimento dem Python.
+Para inicar instalamos o PyCharm IDE para desenvolvimento dem Python.
 Criamos um novo projeto chamado django1
 
 ### Criando arquivo requirements e instalando Djando admin
@@ -9,12 +9,12 @@ Criamos um novo projeto chamado django1
 pip freeze > requirements.txt
 pip install django-admin
 ```
-### Inicializando o djando-amin no projeto
+### Inicializando o  djando-amin no projeto
 
 ```
 django-admin startproject django1 .
 ```
-django1 faz relação ao nome do projeto e informa que deve ser criado na raiz do diretório, se remover o . do final ele cria um novo diretório django1/django1
+django1 faz relação ao nome do projeto e o . informa que deve ser criado na raiz do diretório, se remover o . do final ele cria um novo diretório django1/django1
 
 ### Inicializando uma nova aplicação
 ```
@@ -249,6 +249,15 @@ urlpatterns = [
 
 handler404 = views.error404
 ```
+## Dependências tratamento de external files e servidor produção
+```
+pip install gunicorn
+pip install whitenoise
+```
+No arquivo settings colocar esse MIDDLEWARE abaixo do primeiro middlawere existente
+
+    'whitenoise.middleware.WhiteNoise.Middleware'
+
 ## Erro com o projeto
 
 Tive um erro ao alterar o projeto e rodei esse comando e voltou funcionar
@@ -256,3 +265,19 @@ Tive um erro ao alterar o projeto e rodei esse comando e voltou funcionar
 pip install Django
 python manage.py runserver
 ```
+## Configurando HEROKU
+
+   Criar contar se não tiver https://heroku.com, na raiz do projeto criar um arquivo chamado runtime.txt
+   nesse arquivo mamos colocar a versão do nosso python rode o comando python -V para saber qual a versão que está o projeto
+```
+python -V
+```
+Na minha versão foi o Python 3.11.5. Então eu coloquei essa anotação no arquivo runtime.txt "python-3.11.5"
+
+Depois executamos o comando para adicionar nossas dependências
+```
+pip freeze > requirements.txt
+```
+
+Criar arquivo Procfile e colocar o conteúdo "web: gunicon django1.wsgi --log-file -"
+
