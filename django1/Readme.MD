@@ -1,6 +1,6 @@
 # Criando Projetos Django
 
-Para inicar instalamos o PyCharm IDE para desenvolvimento dem Python.
+Para iníciar instalamos o PyCharm IDE para desenvolvimento dem Python.
 Criamos um novo projeto chamado django1
 
 ### Criando arquivo requirements e instalando Djando admin
@@ -9,12 +9,12 @@ Criamos um novo projeto chamado django1
 pip freeze > requirements.txt
 pip install django-admin
 ```
-### Inicializando o  djando-amin no projeto
+### Inicializando o djando-amin no projeto
 
 ```
 django-admin startproject django1 .
 ```
-django1 faz relação ao nome do projeto e o . informa que deve ser criado na raiz do diretório, se remover o . do final ele cria um novo diretório django1/django1
+django1 faz relação ao nome do projeto e informa que deve ser criado na raiz do diretório, se remover o . do final ele cria um novo diretório django1/django1
 
 ### Inicializando uma nova aplicação
 ```
@@ -248,4 +248,11 @@ urlpatterns = [
 ]
 
 handler404 = views.error404
+```
+## Erro com o projeto
+
+Tive um erro ao alterar o projeto e rodei esse comando e voltou funcionar
+```
+pip install Django
+python manage.py runserver
 ```
