@@ -201,7 +201,7 @@ depois escrevendo somente o nome do nosso objeto instanciado temos essa resposta
 for product in products: 
   print(product)
 ```
-# Arquivos estáticos
+## Arquivos estáticos
 
 Criar um diretório chamado static dentro do app, depois criar seus diretorios ex:
 .css
@@ -215,4 +215,37 @@ STATIC_ROOT = usado para acessar em produção
 Comando para copiar os arquivos estáticos de desenvolvimento para produção
 ```
 python manage.py collectstatic
+```
+
+## Tratamento erro objeto não encontrado
+
+Neste exemplo no arquivo de views importamos essa funcionalidade do módulo MVC,
+alterando a criação do objeto chamamos esse método get_object_or_404 e passamos a classe e a chave no caso id.
+
+```
+from django.shortcuts import get_object_or_404
+
+def product(request, pk):
+    productItem = get_object_or_404(Product, id=pk)
+    context = {
+        'product': productItem
+    }
+    return render(request, 'product.html', context)
+```
+
+### Tratando 404 
+
+  Ir ao projeto e no arquivo urls.py importar os handles e o app que deseja tratar 
+  ```
+from django.contrib import admin
+from django.urls import path, include
+from django.conf.urls import handler404
+from core import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('core.urls')),
+]
+
+handler404 = views.error404
 ```
