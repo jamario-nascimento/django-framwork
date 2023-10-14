@@ -249,11 +249,6 @@ urlpatterns = [
 
 handler404 = views.error404
 ```
-## Dependências tratamento de external files e servidor produção
-```
-pip install gunicorn
-pip install whitenoise
-```
 No arquivo settings colocar esse MIDDLEWARE abaixo do primeiro middlawere existente
 
     'whitenoise.middleware.WhiteNoise.Middleware'
@@ -265,6 +260,15 @@ Tive um erro ao alterar o projeto e rodei esse comando e voltou funcionar
 pip install Django
 python manage.py runserver
 ```
+## Dependências tratamento de external files e servidor produção
+
+gunicorn é um tipo de servidor de aplicação em produção
+whitenoise trata as dependências em modo produção
+```
+pip install gunicorn
+pip install whitenoise
+```
+
 ## Configurando HEROKU
 
    Criar contar se não tiver https://heroku.com, na raiz do projeto criar um arquivo chamado runtime.txt
@@ -281,3 +285,21 @@ pip freeze > requirements.txt
 
 Criar arquivo Procfile e colocar o conteúdo "web: gunicon django1.wsgi --log-file -"
 
+### Criando aplicação heroku 
+#### heroku não tem mais versão gratuita
+
+ No  terminal rodar o comando para fazer login
+```
+heroku login
+```
+Se tudo ocorrer corer bem e o login der certo 
+Estye comando cria uma nova aplicação no heroku via comand line
+```
+heroku create django-jn --buildpack heroku/python
+```
+
+Esse comando vai enviar o projeto para o heroku
+
+```
+git push heroku master
+```
