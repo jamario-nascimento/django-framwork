@@ -3,9 +3,7 @@ from django.shortcuts import render
 from .models import Product
 # Criando minha primeira view
 def index(request):
-
     products = Product.objects.all()
-
     context = {
         'curso': 'Programação Web com Django Framework',
         'products': products,
@@ -16,7 +14,7 @@ def contact(request):
     return render(request, 'contact.html')
 
 def product(request, id):
-    productItem = Product.objects.get(id)
+    productItem = Product.objects.get(id=id)
     context = {
         'product': productItem
     }
